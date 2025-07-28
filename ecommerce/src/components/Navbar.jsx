@@ -24,14 +24,14 @@ function Navbar() {
               <li key={index} className="group relative">
                 <Link
                   to={item.to}
-                  className="relative px-2 py-1 inline-block text-[12px] xs:text-sm sm:text-base font-medium text-orange-3"
+                  className="relative px-2 py-1 inline-block text-[10px] xs:text-sm sm:text-base font-medium text-orange-500"
                 >
-                  <span className={`${isActive ? "text-blue-400" : ""}`}>
+                  <span className={`${isActive ? "text-orange-600" : ""}`}>
                     {item.label}
                   </span>
                   {/* Underline */}
                   <span
-                    className={`absolute left-0 -bottom-0.5 h-[2px] w-full bg-blue-400 transform transition-transform duration-300 origin-left ${
+                    className={`absolute left-0 -bottom-0.5 h-[2px] w-full bg-orange-600 transform transition-transform duration-300 origin-left ${
                       isActive
                         ? "scale-x-100"
                         : "scale-x-0 group-hover:scale-x-100"

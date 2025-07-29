@@ -3,11 +3,30 @@ import { Link } from 'react-router-dom'
 import { fetchProducts } from '../services/api'
 
 function Home() {
+
   const [product, setProduct] = useState([]);
+  const [arrival, setArrival] = useState([]);
+
+  useEffect(() => {
+    const fetchMixedProducts = async () => {
+      const categories = ['mens-shirts', 'fragrances', 'womens-dresses', 'womens-shoes'];
+      const allProducts = [];
+
+      for (const category of categories) {
+        const res = await fetch(`https://dummyjson.com/products/category/${category}`);
+        const data = await res.json();
+        allProducts.push(...data.products.slice(0, 2)); // Pick 2 from each
+      }
+
+      setArrival(allProducts);
+    };
+    fetchMixedProducts();
+  }, []);
 
   useEffect(() => {
     fetchProducts().then(data => setProduct(data.slice(0, 8)));
   }, []);
+
   return (
     <div className="bg-gradient-to-br from-black via-zinc-800 to-black">
       {/* Hero Section */}
@@ -59,28 +78,75 @@ function Home() {
         </div>
       </section>
 
-      <section className='w-full px-8 max-sm:px-4  py-14 bg-black/30 backdrop-blur-md'>
+      <section className='w-full px-8 max-sm:px-2 py-14 bg-black/30 backdrop-blur-md'>
         <h2 className='text-3xl font-bold mb-8 text-center text-white'>Featured Products</h2>
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 max-sm:gap-1'>
           {
             product.map((item, idx) => (
-              <div key={item.id} className="p-4 max-xs:p-2 flex flex-col rounded-xl bg-black/40 backdrop-blur-sm border border-gray-700 shadow-md text-white hover:shadow-lg transition gap-1" >
+              <div
+                key={item.id}
+                className="p-4 max-xs:p-2 flex flex-col rounded-xl bg-black/40 backdrop-blur-sm border border-gray-700 shadow-md text-white transition-transform duration-300 gap-1 group hover:scale-[1.02]"
+                style={{ boxShadow: '0 0 8px rgba(255, 255, 255, 0.1)' }}
+                onMouseEnter={e => e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.3)'}
+                onMouseLeave={e => e.currentTarget.style.boxShadow = '0 0 8px rgba(255, 255, 255, 0.1)'}
+              >
                 <div
                   style={{ boxShadow: '0 0 15px rgba(0, 0, 0, 0.25)' }}
-                  className='shadow-xl overflow-hidden w-full h-75 max-xs:h-50 hover:rounded-md'
+                  className='shadow-xl overflow-hidden w-full h-75 max-xs:h-50 max-xsm:h-40 rounded-md'
                 >
-                  <img src={item.image} alt={item.title} className="w-full hover:scale-110 transition duration-300 sm:h-75 xs:h-65 h-50 mx-auto object-cover mb-4" /> </div>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full sm:h-75 xs:h-65 xsm:h-50 h-40 mx-auto object-cover mb-4"
+                  />
+                </div>
                 <h3 className="text-lg font-semibold line-clamp-1">{item.title}</h3>
-                <p className="text-sm text-gray-300 line-clamp-2 max-xs:hidden" >{item.description}</p>
+                <p className="text-sm text-gray-300 line-clamp-2 max-xs:hidden">{item.description}</p>
                 <p className="mt-2 font-bold text-white">₹{(item.price * 83).toFixed(0)}</p>
-                <Link to={`/product/${item.id}`} className="inline-block mt-3 text-blue-400 hover:underline" >
+                <Link
+                  to={`/product/${item.id}`}
+                  className="inline-block mt-3 text-blue-400 hover:underline"
+                >
                   View Details
                 </Link>
               </div>
             ))
           }
         </div>
+      </section>
 
+
+      <section className="w-full px-2 sm:px-8 py-14 bg-gradient-to-tr from-gray-900 via-black to-gray-800">
+        <h2 className='text-3xl font-bold mb-8 text-center text-white'>New Arrival</h2>
+        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 max-sm:gap-1'>
+          {
+            arrival.map((item) => (
+              <div
+                key={item.id}
+                className="p-4 max-xs:p-2 flex flex-col rounded-xl bg-black/40 backdrop-blur-sm border border-gray-700 shadow-md text-white transition-transform duration-300 gap-1 group hover:scale-[1.02]"
+                style={{ boxShadow: '0 0 8px rgba(255, 255, 255, 0.1)' }}
+                onMouseEnter={e => e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.3)'}
+                onMouseLeave={e => e.currentTarget.style.boxShadow = '0 0 8px rgba(255, 255, 255, 0.1)'}
+              >
+                <img
+                  src={item.thumbnail}
+                  alt={item.title}
+                  className="h-52 max-xsm:h-40 w-full object-cover rounded-xl mb-4 shadow-md"
+                />
+                <h3 className="text-lg font-semibold text-white line-clamp-1">{item.title}</h3>
+                <p className="text-sm text-gray-300 line-clamp-2  max-xs:hidden">{item.description}</p>
+                <p className="mt-2 font-bold text-white">₹{(item.price * 83).toFixed(0)}</p>
+                <a
+                  href={`/product/${item.id}`}
+                  className="inline-block mt-3 text-blue-400 hover:text-blue-300 transition"
+                >
+                  View Details
+                </a>
+              </div>
+
+            ))
+          }
+        </div>
       </section>
     </div>
   )

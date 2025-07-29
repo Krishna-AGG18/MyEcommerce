@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const items = [
@@ -9,10 +9,12 @@ const items = [
 ];
 
 function Navbar() {
+
   const location = useLocation();
 
   return (
-    <div className="w-full sticky top-0 z-50 bg-black shadow-md p-4 flex justify-between items-center">
+    <div className="w-full sticky top-0 z-50 bg-black border-b border-cyan-400/20 shadow-[0_2px_10px_rgba(0,255,255,0.1)] backdrop-blur-sm
+ p-4 flex justify-between items-center">
       <h1 className="text-white text-[12px] sm:text-lg font-bold">Kuch toh naam</h1>
 
       <nav>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { fetchProducts } from '../services/api'
+import Marquee from "react-fast-marquee";
 
 function Home() {
 
@@ -41,8 +42,10 @@ function Home() {
       </section>
 
       <section className="bg-[url('https://images.unsplash.com/photo-1586521532926-7db207e5b019?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHllbGxvdyUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D')] bg-cover bg-center text-gray-800 py-32 px-8 text-center">
-        <p className='text-3xl font-medium'>
-          🎉 Summer Sale! Get <span className="font-bold">30% OFF</span> on all items. Limited time only!
+        <p className='text-4xl font-medium '>
+          <Marquee gradient={true} gradientColor='black' speed={50} className='overflow-y-hidden py-4'>
+          🎉 Summer Sale! Get&nbsp;<span className="font-bold">30%&nbsp;OFF</span>&nbsp;on all items | 🎉 Limited time only! | Fast delivery guaranteed! |
+          </Marquee>
         </p>
       </section>
 

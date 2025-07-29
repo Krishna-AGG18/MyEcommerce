@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { fetchAllProducts, fetchBySearch, fetchProductByCategory } from '../services/api';
-import ProductCard from '../components/ProductCard';
 import ProductList from '../components/ProductList';
 
 function Shop() {

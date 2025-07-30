@@ -106,7 +106,7 @@ function Home() {
                 <p className="text-sm text-gray-300 line-clamp-2 max-xs:hidden">{item.description}</p>
                 <p className="mt-2 font-bold text-white">₹{(item.price * 83).toFixed(0)}</p>
                 <Link
-                  to={`/product/${item.id + 1000}`}
+                  to='/bluff'
                   className="inline-block mt-3 text-blue-400 hover:underline"
                 >
                   View Details

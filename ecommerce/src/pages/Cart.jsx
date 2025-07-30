@@ -77,13 +77,21 @@ function Cart() {
               </div>
             </div>
           ))}
-          <div className='flex justify-end'> 
+          <div className='flex justify-end gap-1'> 
           <button
             onClick={handleClearCart} // Replace with your actual clear function
-            className="px-5 py-2 rounded-xl backdrop-blur-md bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition duration-300 cursor-pointer "
+            className="px-5 py-2 rounded-xl backdrop-blur-md bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition duration-300 cursor-pointer max-xsm:text-[12px] "
           >
             Clear Cart
           </button>
+          <Link to='/checkout'>
+          <button
+            // Replace with your actual clear function
+            className="px-5 py-2 rounded-xl backdrop-blur-md bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition duration-300 cursor-pointer max-xsm:text-[12px]"
+          >
+            Proceed To Checkout
+          </button>
+          </Link>
 
           </div>
 

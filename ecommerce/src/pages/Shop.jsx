@@ -8,6 +8,7 @@ function Shop() {
   const [load, setLoad] = useState(true);
   const [search, setSearch] = useState("");
   const [pop, setPop] = useState(false)
+  
 
   useEffect(() => {
     setLoad(true);
@@ -122,7 +123,7 @@ function Shop() {
       </div>
       {pop && (
         <div
-          className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-[#1e1e1e] text-gray-100 px-6 py-3 rounded-lg shadow-xl z-50 border border-gray-700 transition-opacity duration-500 opacity-100"
+          className="fixed bottom-4 right-1/2 translate-x-1/2 bg-[#d8d5db] text-[#2d3142] px-6 py-3 rounded-lg shadow-xl z-50 border border-gray-400 transition-opacity duration-500 opacity-100 max-xs:text-[10px]"
         >
           🔄 Reload if images aren't visible
         </div>

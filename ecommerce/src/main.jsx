@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Cart, Checkout, Home, Shop } from './pages'
+import { Bluff, Cart, Checkout, Home, Placed, ProductDetails, Shop } from './pages'
 import { CartProvider } from './services/CartContext.jsx';
 import './index.css'
 import App from './App.jsx'
@@ -16,6 +16,9 @@ createRoot(document.getElementById('root')).render(
             <Route path='shop' element={<Shop />} />
             <Route path='cart' element={<Cart />} />
             <Route path='checkout' element={<Checkout />} />
+            <Route path='placed' element={<Placed />} />
+            <Route path='product/:id' element={<ProductDetails />}/>
+            <Route path='bluff' element={<Bluff />}/>
           </Route>
         </Routes>
       </CartProvider>

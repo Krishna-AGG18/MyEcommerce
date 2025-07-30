@@ -86,7 +86,7 @@ function Home() {
           {
             product.map((item, idx) => (
               <div
-                key={item.id}
+                key={item.id + 1000}
                 className="p-4 max-xs:p-2 flex flex-col rounded-xl bg-black/40 backdrop-blur-sm border border-gray-700 shadow-md text-white transition-transform duration-300 gap-1 group hover:scale-[1.02]"
                 style={{ boxShadow: '0 0 8px rgba(255, 255, 255, 0.1)' }}
                 onMouseEnter={e => e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.3)'}
@@ -106,7 +106,7 @@ function Home() {
                 <p className="text-sm text-gray-300 line-clamp-2 max-xs:hidden">{item.description}</p>
                 <p className="mt-2 font-bold text-white">₹{(item.price * 83).toFixed(0)}</p>
                 <Link
-                  to={`/product/${item.id}`}
+                  to={`/product/${item.id + 1000}`}
                   className="inline-block mt-3 text-blue-400 hover:underline"
                 >
                   View Details

@@ -3,3 +3,24 @@
   --breakpoint-xs: 450px;
   --breakpoint-xsm:400px;
 }
+
+@keyframes growFadeIn {
+  from {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.product-animate {
+  view-timeline-name: --productTimeline;
+  view-timeline-axis: block;
+
+  animation-name: growFadeIn;
+  animation-fill-mode: both;
+  animation-timeline: --productTimeline;
+  animation-range: cover 20% entry 80%;
+}

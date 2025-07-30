@@ -22,7 +22,7 @@ export const fetchAllProducts = async ()=> {
 }
 
 export const fetchBySearch = async (search)=> {
-  const res = await fetch(`https://dummyjson.com/products/search?q=${search}`)
+  const res = await fetch(`https://dummyjson.com/products/search?q=${search}&limit=300&skip=0`)
  const items = await res.json();
   // console.log(items)
   return items;

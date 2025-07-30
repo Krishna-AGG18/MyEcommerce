@@ -7,14 +7,17 @@ function Shop() {
   const [category, setCategory] = useState("all");
   const [load, setLoad] = useState(true);
   const [search, setSearch] = useState("");
+  const [pop, setPop] = useState(false)
 
   useEffect(() => {
     setLoad(true);
-    console.log(category)
+    // console.log(category)
     if (category === 'all') {
       fetchAllProducts().then((data) => {
         setItems(data.products.reverse())
         setLoad(false)
+        setPop(true)
+        setTimeout(() => setPop(false), 5000)
       })
     } else {
       fetchProductByCategory(category).then((data) => {
@@ -25,18 +28,25 @@ function Shop() {
   }, [category])
 
   useEffect(() => {
-    if(search.trim() !== ""){
+    if (search.trim() !== "") {
       setLoad(true)
       fetchBySearch(search).then((data) => {
-        setItems(data.products)
-        setLoad(false)
+        // console.log(data);
+        if (data.products.length !== 0) {
+          setItems(data.products)
+          setLoad(false)
+        } else {
+          alert(`No product contains anything like ${search}...`)
+          setSearch("")
+        }
       })
-    }else{
+    } else {
       fetchAllProducts().then((data) => {
         setItems(data.products.reverse())
         setLoad(false);
-  })}
-  },[search])
+      })
+    }
+  }, [search])
 
   return (
     <div className='min-h-screen w-full bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white'>
@@ -101,17 +111,37 @@ function Shop() {
 
 
           <input
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
             type="text"
             placeholder="Search products..."
             className="w-full bg-black/40 border border-gray-700 text-white placeholder-gray-400 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-inner backdrop-blur-sm transition"
           />
         </div>
       </div>
+      {pop && (
+        <div
+          className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-[#1e1e1e] text-gray-100 px-6 py-3 rounded-lg shadow-xl z-50 border border-gray-700 transition-opacity duration-500 opacity-100"
+        >
+          🔄 Reload if images aren't visible
+        </div>
+      )}
       {
-        load ? <h1 className='text-white'>Loading</h1> : <ProductList items={items} />
+        load ? <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+          {[...Array(8)].map((_, i) => (
+            <div key={i}>
+              <div className="border rounded-lg shadow-md p-4 space-y-4 bg-gray-900/40 backdrop-blur-md animate-pulse">
+                <div className="w-full h-48 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 rounded-md"></div>
+                <div className="h-4 bg-gray-700 rounded w-5/6"></div>
+                <div className="h-4 bg-gray-700 rounded w-1/2"></div>
+              </div>
+
+            </div>
+          ))}
+        </div>
+          :
+          <ProductList items={items} />
       }
     </div>
   )

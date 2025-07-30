@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <div className="w-full sticky top-0 z-50 bg-black border-b border-cyan-400/20 shadow-[0_2px_10px_rgba(0,255,255,0.1)] backdrop-blur-sm
  p-4 flex justify-between items-center">
-      <h1 className="text-white text-[12px] sm:text-lg font-bold">Kuch toh naam</h1>
+      <h1 className="text-white text-[10px] xs:text-[12px] sm:text-lg font-bold">Kuch toh naam</h1>
 
       <nav>
         <ul className="flex gap-3 xs:gap-6 sm:gap-10 xs:px-4">

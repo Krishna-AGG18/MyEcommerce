@@ -41,13 +41,12 @@ function Home() {
         </Link>
       </section>
 
-      <section className="bg-[url('https://images.unsplash.com/photo-1586521532926-7db207e5b019?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHllbGxvdyUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D')] bg-cover bg-center text-gray-800 py-32 px-8 text-center">
-        <p className='text-4xl font-medium '>
-          <Marquee gradient={true} gradientColor='black' speed={50} className='overflow-y-hidden py-4'>
-          🎉 Summer Sale! Get&nbsp;<span className="font-bold">30%&nbsp;OFF</span>&nbsp;on all items | 🎉 Limited time only! | Fast delivery guaranteed! |
-          </Marquee>
-        </p>
+      <section className="relative w-full bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 text-black py-6 px-4 text-center">
+        <Marquee gradient={false} speed={60} className="text-lg sm:text-2xl font-semibold tracking-wide">
+          🎉 Summer Sale! Enjoy <span className="font-bold">30% OFF</span> on all items | 🚚 Fast Delivery | 💥 Limited Time Offer | 🛍️ Shop Now!
+        </Marquee>
       </section>
+
 
       <section className='py-16 px-4 max-xs:px-2 max-xs:py-6 max-w-6xl mx-auto'>
         <h2 className='text-3xl font-bold mb-8 text-center text-white'>Categories</h2>

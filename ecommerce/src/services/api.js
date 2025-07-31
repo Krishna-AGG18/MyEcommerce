@@ -1,5 +1,6 @@
 export const fetchProducts = async () => {
-  const res = await fetch('https://fakestoreapi.com/products');
+  const res = await fetch('https://fakestoreapi.in/api/products');
+  
   return await res.json();
 };
 

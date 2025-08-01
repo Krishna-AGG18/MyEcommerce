@@ -97,7 +97,7 @@ function Home() {
                   className='shadow-xl overflow-hidden w-full h-75 max-xs:h-50 max-xsm:h-40 rounded-md'
                 >
                   <img
-                    src={idx === 7 ? 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRysB47-RBedOoqLV_igYfolOz1dSG1K6mo-xdoZnyhELHEHiHOXNQc-FRaXZ7emkC2MElmjUd8b6q7GWge9Ci1TsYaLiZ_Ftv9Azo5DdE' : item.image}
+                    src='https://i.pinimg.com/736x/e2/cb/28/e2cb28e059d5da8276784f8e40705700.jpg'
                     alt={item.title}
                     className="w-full sm:h-75 xs:h-65 xsm:h-50 h-40 mx-auto object-cover mb-4"
                   />
@@ -109,6 +109,7 @@ function Home() {
                   to='/bluff'
                   className="inline-block mt-3 text-blue-400 hover:underline"
                 >
+                  
                   View Details
                 </Link>
               </div>
